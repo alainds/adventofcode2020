@@ -22,12 +22,9 @@ function result2() {
     }
   }
 
-  const reducerIdentique = (accumulator, currentValue) => {
-    const newA = accumulator + 1 === currentValue ? currentValue : accumulator
-    return newA
-  }
   let maPlace
   const placesManquantesId = placesManquantes.map((p) => p.id)
+  //truc compliqué pour faire semblant mais en vrai j'ai juste regardé la console de debug
   placesManquantesId.every((pid, index) => {
     if (pid + 1 !== placesManquantesId[index + 1]) {
       maPlace = placesManquantesId[index + 1]
