@@ -21,8 +21,8 @@ function App() {
         <table>
           {tableauResultats.map((jour, i) => {
             return (
-              <tr key={i}>
-                <td>{"jour" + (jour.length + 2 - i)}</td>
+              <tr>
+                <td>{"jour" + (tableauResultats.length - i)}</td>
                 <td>{jour[0]}</td>
                 <td>{jour[1]}</td>
               </tr>
