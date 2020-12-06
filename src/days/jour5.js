@@ -2,10 +2,8 @@ import { input } from "data/input5"
 
 const dataBrut = input.split("\n")
 const placesBrut = dataBrut.map((i) => [i.substr(0, 7), i.substr(7)])
-const places = calculPlaces(placesBrut)
 
-const longueurRow = Math.pow(2, placesBrut[0][0].length)
-const longueurCol = Math.pow(2, placesBrut[0][1].length)
+const places = calculPlaces(placesBrut)
 
 function result1() {
   return Math.max(...places.map((i) => i.id))
@@ -13,6 +11,9 @@ function result1() {
 
 function result2() {
   const placesManquantes = []
+
+  const longueurRow = Math.pow(2, placesBrut[0][0].length)
+  const longueurCol = Math.pow(2, placesBrut[0][1].length)
   const placesId = places.map((p) => p.id)
   for (let i = 0; i < longueurRow; i++) {
     for (let j = 0; j < longueurCol; j++) {
