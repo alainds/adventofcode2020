@@ -23,17 +23,13 @@ function result2() {
     }
   }
 
-  let maPlace
   const placesManquantesId = placesManquantes.map((p) => p.id)
   //truc compliqué pour faire semblant mais en vrai j'ai juste regardé la console de debug
-  placesManquantesId.every((pid, index) => {
-    if (pid + 1 !== placesManquantesId[index + 1]) {
-      maPlace = placesManquantesId[index + 1]
-      return false
-    }
-    return true
-  })
-  return maPlace
+  return placesManquantesId[
+    placesManquantesId.reduce((acc, curr, i) => {
+      return curr - 1 === acc ? curr : acc
+    }) + 1
+  ]
 }
 
 function calculPlace(chain, bornes, lowChar = "F") {
