@@ -1,10 +1,11 @@
-// import { input } from "data/input7"
+import { input } from "data/input7"
 // import {} from "util/array"
 
-// const dataBrut = input.split("\n\n")
-// const reponsesBrut = dataBrut.map((a) => a.split("\n"))
+const reponsesBrut = input.split("\n").map((a) => a.replace("bags","").replace("contain","") .replace("bags","") .replace(".","").replace(",","")
+.replace("no other","0"))
+
 function result1() {
-  return
+  return reponsesBrut.length
 }
 
 function result2() {

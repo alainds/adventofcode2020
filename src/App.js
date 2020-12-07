@@ -5,9 +5,11 @@ import jour3 from "./days/jour3"
 import jour4 from "./days/jour4"
 import jour5 from "./days/jour5"
 import jour6 from "./days/jour6"
+import jour7 from "./days/jour7"
 
 function App() {
   const tableauResultats = [
+    jour7(),
     jour6(),
     jour5(),
     jour4(),
