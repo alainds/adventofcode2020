@@ -73,25 +73,22 @@ const getBag = function (obj, res = 0) {
   let newobj = { ...obj }
   const sacARemplacerName = obj.othersNames[0]
   const sacARemplacerValue = obj.othersValues[0]
-  let resultat = res + sacARemplacerValue * 1
+  const resultat = res + sacARemplacerValue * 1
   let newSacs = sacs.filter((a) => a.name === sacARemplacerName)[0]
-  if (sacsZeros.includes(sacARemplacerName)) {
-    newobj = {
-      othersNames: [...newobj.othersNames.filter((a, i) => i > 0)],
-      othersValues: [...newobj.othersValues.filter((a, i) => i > 0)],
-    }
-    resultat = res + sacARemplacerValue
-  } else {
-    newobj = {
-      othersNames: [
-        ...newSacs.othersNames,
-        ...newobj.othersNames.filter((a, i) => i > 0),
-      ],
-      othersValues: [
-        ...newSacs.othersValues.map((a, i) => a * sacARemplacerValue),
-        ...newobj.othersValues.filter((a, i) => i > 0),
-      ],
-    }
+  const isSacsZeros = sacsZeros.includes(sacARemplacerName)
+  const newOthersNames = isSacsZeros ? [] : newSacs.othersNames
+  const newOthersValues = isSacsZeros
+    ? []
+    : newSacs.othersValues.map((a, i) => a * sacARemplacerValue)
+  newobj = {
+    othersNames: [
+      ...newOthersNames,
+      ...newobj.othersNames.filter((a, i) => i > 0),
+    ],
+    othersValues: [
+      ...newOthersValues,
+      ...newobj.othersValues.filter((a, i) => i > 0),
+    ],
   }
   if (!newobj.othersNames.length) return resultat
 
