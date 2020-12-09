@@ -46,7 +46,6 @@ function result2() {
       }),
     }
   })
-  console.log(passeportsValues)
   return passeportsValues.map((a) => a.validAndRequired).reduce(reducerSum)
 }
 

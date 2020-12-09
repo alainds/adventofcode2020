@@ -7,17 +7,21 @@ import jour5 from "./days/jour5"
 import jour6 from "./days/jour6"
 import jour7 from "./days/jour7"
 import jour8 from "./days/jour8"
+import jour9 from "./days/jour9"
+// import jour10 from "./days/jour10"
 
 function App() {
   const tableauResultats = [
-    jour8(),
-    jour7(),
-    jour6(),
-    jour5(),
-    jour4(),
-    jour3(),
-    jour2(),
-    jour1(),
+    // jour10(),
+    jour9(),
+    // jour8(),
+    // jour7(),
+    // jour6(),
+    // jour5(),
+    // jour4(),
+    // jour3(),
+    // jour2(),
+    // jour1(),
   ]
   return (
     <div className="App">
@@ -25,7 +29,7 @@ function App() {
         <table>
           {tableauResultats.map((jour, i) => {
             return (
-              <tr>
+              <tr key={i}>
                 <td>{"jour" + (tableauResultats.length - i)}</td>
                 <td>{jour[0]}</td>
                 <td>{jour[1]}</td>

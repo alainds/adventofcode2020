@@ -1,4 +1,4 @@
-export const input = `45
+export let input = `45
 6
 14
 10
