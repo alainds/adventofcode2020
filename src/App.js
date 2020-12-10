@@ -8,20 +8,22 @@ import jour6 from "./days/jour6"
 import jour7 from "./days/jour7"
 import jour8 from "./days/jour8"
 import jour9 from "./days/jour9"
-// import jour10 from "./days/jour10"
+import jour10 from "./days/jour10"
+import jour11 from "./days/jour11"
 
 function App() {
   const tableauResultats = [
-    // jour10(),
+    jour11(),
+    jour10(),
     jour9(),
-    // jour8(),
-    // jour7(),
-    // jour6(),
-    // jour5(),
-    // jour4(),
-    // jour3(),
-    // jour2(),
-    // jour1(),
+    jour8(),
+    jour7(),
+    jour6(),
+    jour5(),
+    jour4(),
+    jour3(),
+    jour2(),
+    jour1(),
   ]
   return (
     <div className="App">
