@@ -82,3 +82,17 @@ function getAdapters(adapters, adapterMax, comp = (x) => Math.min(x)) {
   adaptersSuite.push(adapterMax + 3)
   return { diffs, adaptersSuiteMin: adaptersSuite }
 }
+
+function result1b() {
+  //plus simple
+  const getDiffs = (adapters) =>
+    adapters
+      .sort((a, b) => a > b)
+      .map((a, i) => (i > 0 ? a - adapters[i - 1] : a))
+  const adaptersWithEnd = [...adapters]
+  adaptersWithEnd.push(adapters[adapters - 1] + 3)
+  const diffs = getDiffs(adaptersWithEnd)
+  return (
+    diffs.filter((d) => d === 1).length * diffs.filter((d) => d === 3).length
+  )
+}
