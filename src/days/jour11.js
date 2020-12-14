@@ -4,31 +4,30 @@ import { reducerSum } from "util/array"
 const dataBrut = input.split("\n")
 const seatsInput = dataBrut.map((row) => row.split(""))
 function result1() {
-  let allSeats = [...seatsInput]
-  let seatsTransformed = transformSeats(allSeats)
-  while (isDifferentValues(allSeats, seatsTransformed)) {
-    allSeats = [...seatsTransformed]
-    seatsTransformed = transformSeats(allSeats)
-  }
-  return seatsTransformed
-    .map((r) => r.filter((s) => isOccupied(s)).length)
-    .reduce(reducerSum)
+  return getNbOccupied(seatsInput, countAdjacent)
 }
 
 function result2() {
-  let allSeats = [...seatsInput]
-  let seatsTransformed = transformSeats(allSeats, countAdjacentAllDirection, 5)
-  while (isDifferentValues(allSeats, seatsTransformed)) {
-    allSeats = [...seatsTransformed]
-    seatsTransformed = transformSeats(allSeats, countAdjacentAllDirection, 5)
-  }
-  return seatsTransformed
-    .map((r) => r.filter((s) => isOccupied(s)).length)
-    .reduce(reducerSum)
+  return getNbOccupied(seatsInput, countAdjacentAllDirection, 5)
 }
 
 export default function getResultats() {
   return [result1(), result2()]
+}
+
+const getNbOccupied = (seats, countFunction, nombreMax) =>
+  getSeatsTransformed(seats, countFunction, nombreMax)
+    .map((r) => r.filter((s) => isOccupied(s)).length)
+    .reduce(reducerSum)
+
+const getSeatsTransformed = (seats, countFunction, nombreMax) => {
+  let allSeats
+  let seatsTransformed = [...seats]
+  do {
+    allSeats = [...seatsTransformed]
+    seatsTransformed = transformSeats(allSeats, countFunction, nombreMax)
+  } while (isDifferentValues(allSeats, seatsTransformed))
+  return seatsTransformed
 }
 
 const isDifferentValues = (seats1, seats2) => {
@@ -94,7 +93,6 @@ const transformSeats = (seats, count = countAdjacent, nombreMax = 4) =>
       return newSeat
     })
   )
-
 const getAroundSeats = (seats, i, j) => {
   const aroundSeats = []
   if (i > 0) {
