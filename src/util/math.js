@@ -36,3 +36,27 @@ export function pad(n, width, z = "0") {
   n = n + ""
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n
 }
+
+export function bezout(a, b, c) {
+  let r1 = b
+  let r2 = a
+  let u1 = 1n
+  let u2 = 0n
+  let v1 = 0n
+  let v2 = 1n
+  while (r2 !== 0n) {
+    const q = r1 / r2
+    const rs = r1
+    const us = u1
+    const vs = v1
+    r1 = r2
+    u1 = u2
+    v1 = v2
+    r2 = rs - q * r2
+    u2 = us - q * u2
+    v2 = vs - q * v2
+  }
+
+  return { a0: a, a1: -b, x1: -u1 * c, y1: -v1 * c }
+  // return { u: u1 * c, v: v1 * c }
+}
