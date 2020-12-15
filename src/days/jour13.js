@@ -21,8 +21,9 @@ function result1() {
 }
 
 function result2() {
-  const buses = getBuses()
-
+  const buses = getBuses().map((a, j) => {
+    return { id: j !== 0 ? -a.id : a.id, i: j !== 0 ? -a.i : a.i }
+  })
   const resultatFinal = getResultatFinal(buses)
   // const resultatFinal = getCommonBus(buses)
   return resultatFinal
@@ -34,20 +35,20 @@ function getResultatFinal(buses) {
   let solPart = []
   do {
     let a = busesClone.slice(0, 2)[0].id
-    let b = -busesClone.slice(0, 2)[1].id
+    let b = busesClone.slice(0, 2)[1].id
     let c = busesClone.slice(0, 2)[1].i
 
     // resuEquaParticuliere = getCommonBus(busesClone.slice(0, 2))
     resuEquaParticuliere = bezout(a, b, c)
 
-    solPart.push(resuEquaParticuliere.x1)
+    solPart.push({ x1: resuEquaParticuliere.x1, y1: resuEquaParticuliere.y1 })
     busesClone.splice(0, 2)
     if (busesClone.length) {
       const next = busesClone.splice(0, 1)
-      const { a0, a1, x1 } = resuEquaParticuliere
+      const { a0, a1, y1 } = resuEquaParticuliere
       busesClone = [
         { id: a0 * a1, i: 0n },
-        { id: next[0].id, i: a1 * x1 + next[0].i },
+        { id: next[0].id, i: -a0 * y1 + next[0].i },
         ...busesClone,
       ]
     }
@@ -56,8 +57,8 @@ function getResultatFinal(buses) {
 }
 
 function bezout(a, b, c) {
-  let r1 = a
-  let r2 = b
+  let r1 = b
+  let r2 = a
   let u1 = 1n
   let u2 = 0n
   let v1 = 0n
@@ -75,7 +76,7 @@ function bezout(a, b, c) {
     v2 = vs - q * v2
   }
 
-  return { a0: a, a1: -b, x1: u1 * c, y1: v1 * c }
+  return { a0: a, a1: -b, x1: -u1 * c, y1: -v1 * c }
   // return { u: u1 * c, v: v1 * c }
 }
 

@@ -1,3 +1,3 @@
-export let input = ``
+export let input = `0,1,4,13,15,12,16`
 
-input = ``
+// input = `0,3,6`
