@@ -21,3 +21,10 @@ export const repeteData = (data, nRep) => {
   }
   return newData
 }
+
+export const intersectArray = (array1, array2) =>
+  array1.filter((value) => array2.includes(value))
+
+export function getNbOccurrence(array, value) {
+  return array.filter((v) => v === value).length
+}
