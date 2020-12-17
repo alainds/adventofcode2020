@@ -39,28 +39,18 @@ function result2() {
         ? a.filter((name) => !Object.keys(infosPositions).includes(name))
         : []
     )
-    let changed = false
-    namesByPosition.forEach((nameInCommon, index) => {
-      if (nameInCommon.length === 1) {
-        infosPositions[nameInCommon] = index
-        changed = true
-      }
-    })
-    if (!changed) {
-      const allNames = namesByPosition.filter((a) => a.length > 0).flat()
-
-      const uniqueNames = uniq(allNames)
-        .map((name) => {
-          return { name, count: getNbOccurrence(allNames, name) }
-        })
-        .filter((a) => a.count === 1)
-        .map((a) => a.name)
-
-      namesByPosition.forEach((nameInCommon, index) => {
-        const intersect = intersectArray(uniqueNames, nameInCommon)
-        if (intersect.length === 1) infosPositions[intersect[0]] = index
+    const allNames = namesByPosition.filter((a) => a.length > 0).flat()
+    const uniqueNames = uniq(allNames)
+      .map((name) => {
+        return { name, count: getNbOccurrence(allNames, name) }
       })
-    }
+      .filter((a) => a.count === 1)
+      .map((a) => a.name)
+
+    namesByPosition.forEach((nameInCommon, index) => {
+      const intersect = intersectArray(uniqueNames, nameInCommon)
+      if (intersect.length === 1) infosPositions[intersect[0]] = index
+    })
   }
   const departuresPositions = []
   for (const [cle, valeur] of Object.entries(infosPositions)) {

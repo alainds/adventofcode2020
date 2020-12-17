@@ -19,8 +19,8 @@ import jour17 from "./days/jour17"
 
 function App() {
   const tableauResultats = [
-    // jour17(),
-    jour16(),
+    jour17(),
+    // jour16(),
     // jour15(),
     // jour14(),
     // jour13(),
