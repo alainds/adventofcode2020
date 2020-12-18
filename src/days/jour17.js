@@ -2,22 +2,22 @@ import { input } from "data/input17"
 import { reducerSum } from "util/array"
 
 function result1() {
-  // const cubesInit = input
-  //   .split("\n")
-  //   .map((a) => a.split("").map((c) => (c === "#" ? 1 : 0)))
-  // const NB_CYCLES = 6
-  // let cubes = constructCubes(cubesInit, NB_CYCLES)
-  // for (let i = 0; i < NB_CYCLES; i++) {
-  //   cubes = transformCubes(cubes)
-  // }
-  // return cubes.flat(2).reduce(reducerSum)
+  const cubesInit = input
+    .split("\n")
+    .map((a) => a.split("").map((c) => (c === "#" ? 1 : 0)))
+  const NB_CYCLES = 6
+  let cubes = constructCubes(cubesInit, NB_CYCLES)
+  for (let i = 0; i < NB_CYCLES; i++) {
+    cubes = transformCubes(cubes)
+  }
+  return cubes.flat(2).reduce(reducerSum)
 }
 
 function result2() {
   const cubesInit = input
     .split("\n")
     .map((a) => a.split("").map((c) => (c === "#" ? 1 : 0)))
-
+  //flemme de parametriser la dimension : copie sale de code
   const NB_CYCLES = 6
   let hypercubes = constructHyperCubes(cubesInit, NB_CYCLES)
   for (let i = 0; i < NB_CYCLES; i++) {
