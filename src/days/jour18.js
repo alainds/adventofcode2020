@@ -80,15 +80,6 @@ function calcul(operation, calculSimpleFunc = calculSimple) {
     )
   }
 }
-function calculWithBracket(operation) {
-  if (!operation.includes("(")) {
-    return calculSimple(operation)
-  } else {
-    const regexBrace = /\(([^(^)]+)\)/
-    const operationInBracket = regexBrace.exec(operation)[1]
-    return calcul(operation.replace(regexBrace, calcul(operationInBracket)))
-  }
-}
 
 function getData() {
   return input.split("\n").map((a) => a.replaceAll(" ", ""))
