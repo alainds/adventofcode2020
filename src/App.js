@@ -17,10 +17,20 @@ import jour15 from "./days/jour15"
 import jour16 from "./days/jour16"
 import jour17 from "./days/jour17"
 import jour18 from "./days/jour18"
+import jour19 from "./days/jour19"
+import jour20 from "./days/jour20"
+import jour23 from "./days/jour23"
+import jour24 from "./days/jour24"
+import jour25 from "./days/jour25"
 
 function App() {
   const tableauResultats = [
-    jour18(),
+    jour25(),
+    // jour24(),
+    // jour23(),
+    // jour20(),
+    // jour19(),
+    // jour18(),
     // jour17(),
     // jour16(),
     // jour15(),
